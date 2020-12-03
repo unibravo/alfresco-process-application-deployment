@@ -12,7 +12,7 @@ global:
   applicationVersion: "1"
 
   image:
-    pullPolicy: IfNotPresent
+    pullPolicy: Always
 
   keycloak:
     # global.keycloak.host -- Configure Keycloak host template, i.e. "{{ .Release.Namespace }}.{{ .Values.global.gateway.domain }}"
@@ -59,7 +59,7 @@ activiti-cloud-query:
     enabled: true
   image:
     repository: quay.io/alfresco/alfresco-process-query-service
-    tag: 7.1.0-M11MOCK1
+    tag: develop
   ingress:
     path: /{{ .Release.Name }}
     enabled: true
@@ -107,7 +107,7 @@ runtime-bundle:
     enabled: true
   image:
     repository: quay.io/alfresco/alfresco-process-runtime-bundle-service
-    tag: 7.1.0-M11MOCK1
+    tag: develop
   ingress:
     enabled: true
     path: /{{ .Release.Name }}
@@ -170,7 +170,7 @@ activiti-cloud-connector:
   nameOverride: example-cloud-connector
   image:
     repository: activiti/example-cloud-connector
-    tag: 7.1.0-M11MOCK1
+    tag: develop
   ingress:
     enabled: true
     path: "/{{ .Release.Name }}/{{ .Values.nameOverride }}"
@@ -198,7 +198,7 @@ alfresco-process-workspace-app:
   nameOverride: workspace-app
   image:
     repository: quay.io/alfresco/alfresco-process-workspace-app
-    tag: 7.1.0-M11MOCK1
+    tag: develop
   ingress:
     path: "/{{ .Release.Name }}/workspace"
     annotations:
@@ -216,7 +216,7 @@ alfresco-digital-workspace-app:
     path: "/{{ .Release.Name }}/digital-workspace"
   image:
     repository: quay.io/alfresco/alfresco-digital-workspace
-    tag: 7.1.0-M11MOCK1
+    tag: develop
     annotations:
       kubernetes.io/ingress.class: nginx
       nginx.ingress.kubernetes.io/rewrite-target: /$1
@@ -236,7 +236,7 @@ alfresco-admin-app:
     path: "/{{ .Release.Name }}/admin"
   image:
     repository: quay.io/alfresco/alfresco-admin-app
-    tag: 7.1.0-M11MOCK1
+    tag: develop
     annotations:
       kubernetes.io/ingress.class: nginx
       nginx.ingress.kubernetes.io/rewrite-target: /$1
@@ -291,7 +291,7 @@ volumeinit:
   image:
     repository: alfresco/example-application-project
     tag: latest
-    pullPolicy: IfNotPresent
+    pullPolicy: Always
 
 persistence:
   enabled: true
